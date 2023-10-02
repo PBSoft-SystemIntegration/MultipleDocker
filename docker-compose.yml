@@ -6,13 +6,37 @@ services:
     build:
       dockerfile: MultipleDocker/Dockerfile 
     environment:
-    - urls=dockerservice/service
+    - urlsForExternal=consumer/service;restaurant/service;accounting/service;kitchen/service;delivery/service
     ports:
     - "8080:80"
-  dockerservice:
+  consumer:
     image: docker_service
     build:
       dockerfile: DockerService/Dockerfile
     environment:
-    - returnValue=Ans From service!
+    - returnValue=Consumer verified!
+  restaurant:
+    image: docker_service
+    build:
+      dockerfile: DockerService/Dockerfile
+    environment:
+    - returnValue=Order verified!
+  accounting:
+    image: docker_service
+    build:
+      dockerfile: DockerService/Dockerfile
+    environment:
+    - returnValue=Card Authorized!
+  kitchen:
+    image: docker_service
+    build:
+      dockerfile: DockerService/Dockerfile
+    environment:
+    - returnValue=TicketCreated\n Order Accepted
+  delivery:
+    image: docker_service
+    build:
+      dockerfile: DockerService/Dockerfile
+    environment:
+    - returnValue=Scheduled delivery!
 
