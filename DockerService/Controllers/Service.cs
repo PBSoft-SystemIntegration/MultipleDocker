@@ -10,7 +10,13 @@ public class Service : ControllerBase
     public ActionResult<string> Get()
     {
         string? returnValue = Environment.GetEnvironmentVariable("returnValue");
-        if (returnValue == null) return BadRequest("Missing returnValue!");
+        Console.WriteLine("Modtog GET /Service");
+        if (returnValue == null)
+        {
+            Console.WriteLine("Fejl: returnValue mangler.");
+            return BadRequest("Missing returnValue!");
+        }
+        Console.WriteLine($"Sender svar: {returnValue}");
         return Ok(returnValue);
     }
 }
