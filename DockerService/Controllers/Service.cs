@@ -1,25 +1,16 @@
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DockerService.Controllers
+namespace DockerService.Controllers;
+
+[ApiController]
+[Route("[controller]")]
+public class Service : ControllerBase
 {
-    [ApiController]
-    [Route("[controller]")]
-    public class Service : ControllerBase
+    [HttpGet]
+    public ActionResult<string> Get()
     {
-        //        service/
-        [HttpGet(Name = "Get")]
-        public async Task<ActionResult<string>> Get()
-        {  
-            string returnValue = Environment.GetEnvironmentVariable("returnValue");
-            if (returnValue!=null)
-            {
-                return Ok(returnValue);
-            }
-            else
-            {
-                return BadRequest("dont have a return value!");
-            }
-        }
+        string? returnValue = Environment.GetEnvironmentVariable("returnValue");
+        if (returnValue == null) return BadRequest("Missing returnValue!");
+        return Ok(returnValue);
     }
 }

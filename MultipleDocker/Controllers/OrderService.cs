@@ -9,12 +9,13 @@ namespace MultipleDocker.Controllers
         [HttpGet(Name = "GetOrder")]
         public async Task<ActionResult<string>> Get()
         {
-            HttpClient client = new HttpClient();
-            string urlAdress = Environment.GetEnvironmentVariable("urlsForExternal");
+            using HttpClient client = new HttpClient();
+            string? urlAdress = Environment.GetEnvironmentVariable("urlsForExternal");
+            if (urlAdress == null) return BadRequest("Missing urlsForExternal!");
             List<string> urls = urlAdress.Split(";").ToList();
             foreach (string url in urls)
             {
-                var resp = await client.GetAsync("http://" + url);
+                using var resp = await client.GetAsync("http://" + url);
                 if (!resp.IsSuccessStatusCode)
                 {
 

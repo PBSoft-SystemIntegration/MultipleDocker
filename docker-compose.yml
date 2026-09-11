@@ -1,42 +1,39 @@
-version: '3.8'
 
 services:
   multipleDocker:
     image: multiple_docker
     build:
+      context: .
       dockerfile: MultipleDocker/Dockerfile 
     environment:
     - urlsForExternal=consumer/service;restaurant/service;accounting/service;kitchen/service;delivery/service
     ports:
-    - "8080:80"
+    - "${API_PORT:-8080}:80"
   consumer:
     image: docker_service
     build:
+      context: .
       dockerfile: DockerService/Dockerfile
     environment:
     - returnValue=Consumer verified!
   restaurant:
     image: docker_service
-    build:
-      dockerfile: DockerService/Dockerfile
+    pull_policy: never
     environment:
     - returnValue=Order verified!
   accounting:
     image: docker_service
-    build:
-      dockerfile: DockerService/Dockerfile
+    pull_policy: never
     environment:
     - returnValue=Card Authorized!
   kitchen:
     image: docker_service
-    build:
-      dockerfile: DockerService/Dockerfile
+    pull_policy: never
     environment:
     - returnValue=TicketCreated\n Order Accepted
   delivery:
     image: docker_service
-    build:
-      dockerfile: DockerService/Dockerfile
+    pull_policy: never
     environment:
     - returnValue=Scheduled delivery!
 

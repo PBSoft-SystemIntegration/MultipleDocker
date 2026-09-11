@@ -5,8 +5,8 @@
     <DockerTargetOS>Linux</DockerTargetOS>
     <ProjectGuid>36a6429d-3b02-4b2c-a45f-f5d798a46282</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
-    <DockerServiceUrl>{Scheme}://localhost:{ServicePort}</DockerServiceUrl>
-    <DockerServiceName>dockerservice</DockerServiceName>
+    <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/scalar</DockerServiceUrl>
+    <DockerServiceName>multipleDocker</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>
     <None Include="docker-compose.yml" />
