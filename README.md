@@ -37,4 +37,4 @@ har en eksponeret vÃ¦rtsport; interne kald bruger Compose-servicenavne og port 8
 Som i Ã¸velsens forenklede forslag bruges GET uden ordreparametre til at demonstrere flowet.
 Der er ingen database, healthchecks eller automatisk fejlhÃ¥ndtering i eksemplet.
 
-Compose bygger docker_service via consumer én gang. De øvrige fire services genbruger dette image.
+Compose bygger docker_service via consumer ï¿½n gang. De ï¿½vrige fire services genbruger dette image.
