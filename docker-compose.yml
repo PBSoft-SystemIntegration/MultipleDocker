@@ -30,7 +30,7 @@ services:
     image: docker_service
     pull_policy: never
     environment:
-    - returnValue=TicketCreated\n Order Accepted
+    - returnValue=TicketCreated Order Accepted
   delivery:
     image: docker_service
     pull_policy: never
